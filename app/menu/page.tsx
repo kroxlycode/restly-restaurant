@@ -195,10 +195,10 @@ export default function MenuPage() {
           initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`fixed lg:static top-20 left-0 z-40 w-80 lg:w-80 h-[calc(100vh-80px)] lg:h-auto bg-primary-card border-r border-gray-700 p-6 transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+          className={`fixed top-20 left-0 z-40 w-80 h-[calc(100vh-80px)] bg-primary-card border-r border-gray-700 p-6 transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
             }`}
         >
-          <div className="flex items-center justify-between mb-6 lg:hidden">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-serif font-bold text-text-primary">Filtre</h2>
             <button
               onClick={(e) => {
@@ -324,7 +324,7 @@ export default function MenuPage() {
         
         {sidebarOpen && (
           <div
-            className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+            className="fixed inset-0 bg-black/50 z-30"
             onClick={() => setSidebarOpen(false)}
           />
         )}
@@ -332,9 +332,12 @@ export default function MenuPage() {
         
         <main className="flex-1 section-padding">
           
-          <div className="lg:hidden mb-6">
+          <div className="mb-6">
             <button
-              onClick={() => setSidebarOpen(true)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSidebarOpen(true);
+              }}
               className="flex items-center space-x-2 bg-primary-card hover:bg-primary-secondary px-4 py-2 rounded-lg border border-gray-700 transition-colors"
             >
               <Filter size={20} />
