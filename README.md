@@ -16,7 +16,6 @@
 - [Kurulum](#-kurulum-ve-çalıştırma)
 - [Yapılandırma](#️-yapılandırma)
 - [Proje Yapısı](#-proje-yapısı)
-- [Ekran Görüntüleri](#-ekran-görüntüleri)
 - [Katkıda Bulunma](#-katkıda-bulunma)
 - [Lisans](#-lisans)
 - [İletişim](#-iletişim)
@@ -281,19 +280,6 @@ restly-restaurant/
 | Tablet | 768px - 1024px |
 | Desktop | 1024px - 1440px |
 | Large Desktop | 1440px+ |
-
----
-
-## 📸 Ekran Görüntüleri
-
-### Ana Sayfa
-![Ana Sayfa](https://via.placeholder.com/800x400?text=Homepage)
-
-### Admin Dashboard
-![Admin Dashboard](https://via.placeholder.com/800x400?text=Admin+Dashboard)
-
-### Menü Sayfası
-![Menü](https://via.placeholder.com/800x400?text=Menu+Page)
 
 ---
 
