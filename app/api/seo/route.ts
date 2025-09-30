@@ -56,13 +56,21 @@ const saveSeoData = (data: SeoSettings): boolean => {
 export async function GET() {
   try {
     const seoData = getSeoData()
-    return NextResponse.json(seoData)
+    const response = NextResponse.json(seoData)
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
   } catch (error) {
     console.error('SEO verileri alınırken hata:', error)
-    return NextResponse.json(
+    const response = NextResponse.json(
       { error: 'SEO verileri alınamadı' },
       { status: 500 }
     )
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
   }
 }
 
@@ -110,19 +118,38 @@ export async function POST(request: NextRequest) {
 
     const success = saveSeoData(newSeoData)
     if (success) {
-      return NextResponse.json({ message: 'SEO ayarları başarıyla kaydedildi' })
+      const response = NextResponse.json({ message: 'SEO ayarları başarıyla kaydedildi' })
+      response.headers.set('Access-Control-Allow-Origin', '*')
+      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+      return response
     } else {
-      return NextResponse.json(
+      const response = NextResponse.json(
         { error: 'SEO ayarları kaydedilemedi' },
         { status: 500 }
       )
+      response.headers.set('Access-Control-Allow-Origin', '*')
+      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+      return response
     }
   } catch (error) {
     console.error('SEO ayarları kaydedilirken hata:', error)
-    return NextResponse.json(
+    const response = NextResponse.json(
       { error: 'SEO ayarları kaydedilirken hata oluştu' },
       { status: 500 }
     )
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
   }
 }
 
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 200 })
+  response.headers.set('Access-Control-Allow-Origin', '*')
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  return response
+}

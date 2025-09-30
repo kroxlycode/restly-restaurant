@@ -7,10 +7,14 @@ export async function GET() {
     const contactPath = path.join(process.cwd(), 'data', 'contact.json')
     const contactData = JSON.parse(fs.readFileSync(contactPath, 'utf8'))
 
-    return NextResponse.json(contactData)
+    const response = NextResponse.json(contactData)
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
   } catch (error) {
     console.error('Contact info API error:', error)
-    return NextResponse.json(
+    const response = NextResponse.json(
       {
         location: 'Nişantaşı Mah. Teşvikiye Cad. İstanbul/Şişli',
         phone: '+90 555 555 55 55',
@@ -18,5 +22,17 @@ export async function GET() {
       },
       { status: 500 }
     )
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
   }
+}
+
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 200 })
+  response.headers.set('Access-Control-Allow-Origin', '*')
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  return response
 }
