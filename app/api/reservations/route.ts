@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
-const reservationsFilePath = path.join(process.cwd(), 'data', 'reservations.json')
-
 export async function GET() {
   try {
     const fileContents = fs.readFileSync(reservationsFilePath, 'utf8')
