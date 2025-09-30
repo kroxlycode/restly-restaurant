@@ -204,19 +204,9 @@ export default function MenuPage() {
           initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`hidden lg:block w-80 bg-primary-card border-r border-gray-700 p-6 transition-all duration-300 ${sidebarOpen ? 'lg:translate-x-0' : 'lg:-translate-x-full lg:w-12'}`}
+          className="hidden lg:block w-80 bg-primary-card border-r border-gray-700 p-6"
         >
-          <div className="flex items-center justify-between mb-6">
-            <h2 className={`${sidebarOpen ? 'block' : 'lg:hidden'} text-xl font-serif font-bold text-text-primary`}>Filtre</h2>
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 hover:bg-primary-secondary rounded-lg transition-colors"
-            >
-              <Filter size={20} className="text-text-secondary" />
-            </button>
-          </div>
-
-          <div className={`space-y-6 overflow-y-auto max-h-[calc(100vh-200px)] ${sidebarOpen ? 'block' : 'lg:hidden'}`}>
+          <div className="space-y-6">
             {/* Arama */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-text-primary">Ürün Ara</label>
@@ -248,7 +238,7 @@ export default function MenuPage() {
                 </button>
               </div>
               
-              <div className="grid grid-cols-1 gap-2">
+              <div className="grid grid-cols-1 gap-2 max-h-[300px] overflow-y-auto">
                 {categories.map((category) => (
                   <button
                     key={category.id}
@@ -636,7 +626,7 @@ export default function MenuPage() {
         )}
 
         
-        <main className={`flex-1 section-padding ${sidebarOpen ? 'lg:ml-0' : 'lg:ml-0'}`}>
+        <main className={`flex-1 section-padding lg:ml-80`}>
           
           <div className="lg:hidden mb-6">
             <button
