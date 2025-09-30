@@ -235,6 +235,65 @@ export default function MenuPage() {
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-700">
+            <h3 className="text-lg font-semibold text-text-primary mb-4">Filtreler</h3>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="popular-filter"
+                  checked={showPopularOnly}
+                  onChange={(e) => setShowPopularOnly(e.target.checked)}
+                  className="w-4 h-4 text-accent-gold bg-primary-bg border-gray-600 rounded focus:ring-accent-gold focus:ring-2"
+                />
+                <label htmlFor="popular-filter" className="text-text-primary text-sm font-medium cursor-pointer">
+                  Sadece Popüler Ürünler
+                </label>
+              </div>
+
+              <div className="relative">
+                <select
+                  value={ratingFilter || ''}
+                  onChange={(e) => setRatingFilter(e.target.value ? parseInt(e.target.value) : null)}
+                  className="appearance-none w-full bg-primary-bg border border-gray-600 rounded-lg px-4 py-2 pr-8 text-text-primary text-sm focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                >
+                  <option value="">Tüm Puanlar</option>
+                  <option value="5">5+ Yıldız</option>
+                  <option value="4">4+ Yıldız</option>
+                  <option value="3">3+ Yıldız</option>
+                  <option value="2">2+ Yıldız</option>
+                  <option value="1">1+ Yıldız</option>
+                </select>
+                <ChevronDown size={16} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
+              </div>
+
+              <div className="relative">
+                <select
+                  value={sortBy || ''}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  className="appearance-none w-full bg-primary-bg border border-gray-600 rounded-lg px-4 py-2 pr-8 text-text-primary text-sm focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                >
+                  <option value="">Sıralama</option>
+                  <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+                  <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+                  <option value="rating">Puana Göre</option>
+                  <option value="name">İsme Göre</option>
+                </select>
+                <ChevronDown size={16} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
+              </div>
+
+              {hasActiveFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="flex items-center space-x-2 text-accent-gold hover:text-yellow-400 text-sm font-medium transition-colors"
+                >
+                  <RotateCcw size={16} />
+                  <span>Filtreleri Temizle</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-gray-700">
             <h3 className="text-lg font-semibold text-text-primary mb-4">Menü İstatistikleri</h3>
             <div className="space-y-2 text-sm text-text-secondary">
               <div className="flex justify-between">
@@ -313,122 +372,6 @@ export default function MenuPage() {
                   )}
                 </span>
               </div>
-
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="mb-8 bg-primary-secondary rounded-xl p-6 border border-gray-700"
-              >
-                <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
-                  <div className="flex flex-wrap gap-4 items-center">
-                    
-                    <div className="flex items-center space-x-2">
-                      <input
-                        type="checkbox"
-                        id="popular-filter"
-                        checked={showPopularOnly}
-                        onChange={(e) => setShowPopularOnly(e.target.checked)}
-                        className="w-4 h-4 text-accent-gold bg-primary-bg border-gray-600 rounded focus:ring-accent-gold focus:ring-2"
-                      />
-                      <label htmlFor="popular-filter" className="text-text-primary text-sm font-medium cursor-pointer">
-                        Sadece Popüler Ürünler
-                      </label>
-                    </div>
-
-                    
-                    <div className="relative">
-                      <select
-                        value={ratingFilter || ''}
-                        onChange={(e) => setRatingFilter(e.target.value ? parseInt(e.target.value) : null)}
-                        className="appearance-none bg-primary-bg border border-gray-600 rounded-lg px-4 py-2 pr-8 text-text-primary text-sm focus:ring-2 focus:ring-accent-gold focus:border-transparent"
-                      >
-                        <option value="">Tüm Puanlar</option>
-                        <option value="5">5+ Yıldız</option>
-                        <option value="4">4+ Yıldız</option>
-                        <option value="3">3+ Yıldız</option>
-                        <option value="2">2+ Yıldız</option>
-                        <option value="1">1+ Yıldız</option>
-                      </select>
-                      <ChevronDown size={16} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
-                    </div>
-
-                    
-                    <div className="relative">
-                      <select
-                        value={sortBy || ''}
-                        onChange={(e) => setSortBy(e.target.value as any)}
-                        className="appearance-none bg-primary-bg border border-gray-600 rounded-lg px-4 py-2 pr-8 text-text-primary text-sm focus:ring-2 focus:ring-accent-gold focus:border-transparent"
-                      >
-                        <option value="">Sıralama</option>
-                        <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
-                        <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
-                        <option value="rating">Puana Göre</option>
-                        <option value="name">İsme Göre</option>
-                      </select>
-                      <ChevronDown size={16} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
-                    </div>
-                  </div>
-
-                  
-                  {hasActiveFilters && (
-                    <button
-                      onClick={clearFilters}
-                      className="flex items-center space-x-2 text-accent-gold hover:text-yellow-400 text-sm font-medium transition-colors"
-                    >
-                      <RotateCcw size={16} />
-                      <span>Filtreleri Temizle</span>
-                    </button>
-                  )}
-                </div>
-
-                
-                {hasActiveFilters && (
-                  <div className="mt-4 pt-4 border-t border-gray-700">
-                    <div className="flex flex-wrap gap-2">
-                      {showPopularOnly && (
-                        <span className="inline-flex items-center space-x-1 bg-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-medium">
-                          <span>Popüler Ürünler</span>
-                          <button
-                            onClick={() => setShowPopularOnly(false)}
-                            className="hover:text-red-300"
-                          >
-                            <X size={12} />
-                          </button>
-                        </span>
-                      )}
-                      {ratingFilter !== null && (
-                        <span className="inline-flex items-center space-x-1 bg-accent-gold/20 text-accent-gold px-3 py-1 rounded-full text-xs font-medium">
-                          <span>{ratingFilter}+ Yıldız</span>
-                          <button
-                            onClick={() => setRatingFilter(null)}
-                            className="hover:text-yellow-300"
-                          >
-                            <X size={12} />
-                          </button>
-                        </span>
-                      )}
-                      {sortBy && (
-                        <span className="inline-flex items-center space-x-1 bg-primary-bg text-text-primary px-3 py-1 rounded-full text-xs font-medium border border-gray-600">
-                          <span>
-                            {sortBy === 'price-asc' ? 'Fiyat: ↑' :
-                             sortBy === 'price-desc' ? 'Fiyat: ↓' :
-                             sortBy === 'rating' ? 'Puana Göre' :
-                             sortBy === 'name' ? 'İsme Göre' : ''}
-                          </span>
-                          <button
-                            onClick={() => setSortBy(null)}
-                            className="hover:text-text-secondary"
-                          >
-                            <X size={12} />
-                          </button>
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </motion.div>
 
               <motion.div
                 layout
