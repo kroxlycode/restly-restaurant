@@ -201,10 +201,7 @@ export default function MenuPage() {
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-serif font-bold text-text-primary">Filtre</h2>
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSidebarOpen(false);
-              }}
+              onClick={() => setSidebarOpen(false)}
               className="p-2 hover:bg-primary-secondary rounded-lg transition-colors"
             >
               <X size={20} className="text-text-secondary" />
