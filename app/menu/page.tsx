@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Star, AlertTriangle, Filter, X, Clock, MapPin, ChevronDown, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Star, AlertTriangle, Filter, X, Clock, MapPin, ChevronDown, RotateCcw, ChevronLeft, ChevronRight, Search } from 'lucide-react'
 
 interface MenuCategory {
   id: string
@@ -45,6 +45,7 @@ export default function MenuPage() {
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null)
   const [showItemModal, setShowItemModal] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
+  const [searchQuery, setSearchQuery] = useState('')
 
 
   const [showPopularOnly, setShowPopularOnly] = useState(false)
@@ -58,7 +59,7 @@ export default function MenuPage() {
 
   useEffect(() => {
     setCurrentPage(1)
-  }, [selectedCategory, showPopularOnly, ratingFilter, sortBy])
+  }, [selectedCategory, showPopularOnly, ratingFilter, sortBy, searchQuery])
 
 
   useEffect(() => {
@@ -105,21 +106,27 @@ export default function MenuPage() {
   const filteredItems = (() => {
     let items = menuItems
 
+    // Arama filtresi
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim()
+      items = items.filter(item =>
+        item.name.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query) ||
+        item.ingredients.some(ingredient => ingredient.toLowerCase().includes(query))
+      )
+    }
 
     if (selectedCategory !== 'all') {
       items = items.filter(item => item.categoryId === selectedCategory)
     }
 
-
     if (showPopularOnly) {
       items = items.filter(item => item.popular)
     }
 
-
     if (ratingFilter !== null) {
       items = items.filter(item => Math.floor(item.rating) >= ratingFilter)
     }
-
 
     if (sortBy) {
       items = [...items].sort((a, b) => {
@@ -155,9 +162,10 @@ export default function MenuPage() {
     setShowPopularOnly(false)
     setRatingFilter(null)
     setSortBy(null)
+    setSearchQuery('')
   }
 
-  const hasActiveFilters = showPopularOnly || ratingFilter !== null || sortBy !== null
+  const hasActiveFilters = showPopularOnly || ratingFilter !== null || sortBy !== null || searchQuery.trim() !== ''
 
   if (loading) {
     return (
@@ -208,30 +216,183 @@ export default function MenuPage() {
             </button>
           </div>
 
-          <div className={`space-y-4 overflow-y-auto max-h-[calc(100vh-200px)] ${sidebarOpen ? 'block' : 'lg:hidden'}`}>
-            <button
-              onClick={() => setSelectedCategory('all')}
-              className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedCategory === 'all'
-                  ? 'bg-accent-gold text-primary-bg shadow-lg'
-                  : 'bg-primary-secondary text-text-secondary hover:text-accent-gold hover:bg-primary-bg border border-gray-700'
-                }`}
-            >
-              Tüm Ürünler
-            </button>
+          <div className={`space-y-6 overflow-y-auto max-h-[calc(100vh-200px)] ${sidebarOpen ? 'block' : 'lg:hidden'}`}>
+            {/* Arama */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-text-primary">Ürün Ara</label>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Ürün adı ile ara..."
+                  className="w-full bg-primary-bg border border-gray-600 rounded-lg px-4 py-3 pr-10 text-text-primary placeholder-text-secondary focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <Search size={18} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary" />
+              </div>
+            </div>
 
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedCategory === category.id
-                    ? 'bg-accent-gold text-primary-bg shadow-lg'
-                    : 'bg-primary-secondary text-text-secondary hover:text-accent-gold hover:bg-primary-bg border border-gray-700'
+            {/* Kategoriler */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-text-primary">Kategoriler</h3>
+                <button
+                  onClick={() => setSelectedCategory('all')}
+                  className={`text-sm px-3 py-1 rounded-full transition-colors ${
+                    selectedCategory === 'all'
+                      ? 'bg-accent-gold text-primary-bg'
+                      : 'bg-primary-secondary text-text-secondary hover:text-accent-gold'
                   }`}
-              >
-                <div className="font-medium">{category.name}</div>
-                <div className="text-sm opacity-70 mt-1">{category.description}</div>
-              </button>
-            ))}
+                >
+                  Tümünü Göster
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 group ${
+                      selectedCategory === category.id
+                        ? 'bg-accent-gold text-primary-bg shadow-lg scale-105'
+                        : 'bg-primary-secondary text-text-secondary hover:text-accent-gold hover:bg-primary-bg border border-gray-700 hover:scale-102'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-3 h-3 rounded-full transition-colors ${
+                        selectedCategory === category.id ? 'bg-primary-bg' : 'bg-accent-gold'
+                      }`} />
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium truncate">{category.name}</div>
+                        <div className="text-xs opacity-70 truncate">{category.description}</div>
+                      </div>
+                      <ChevronRight size={16} className={`transition-transform duration-200 ${
+                        selectedCategory === category.id ? 'rotate-90' : 'group-hover:translate-x-1'
+                      }`} />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Hızlı Filtreler */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-text-primary">Hızlı Filtreler</h3>
+              
+              <div className="space-y-3">
+                {/* Popüler Ürünler */}
+                <label className="flex items-center space-x-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={showPopularOnly}
+                    onChange={(e) => setShowPopularOnly(e.target.checked)}
+                    className="w-5 h-5 text-accent-gold bg-primary-bg border-gray-600 rounded focus:ring-accent-gold focus:ring-2"
+                  />
+                  <div className="flex items-center space-x-2">
+                    <Star size={16} className="text-yellow-400 fill-current" />
+                    <span className="text-text-primary font-medium group-hover:text-accent-gold transition-colors">
+                      Sadece Popüler Ürünler
+                    </span>
+                  </div>
+                </label>
+
+                {/* Puan Filtresi */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-text-primary">Minimum Puan</label>
+                  <div className="relative">
+                    <select
+                      value={ratingFilter || ''}
+                      onChange={(e) => setRatingFilter(e.target.value ? parseInt(e.target.value) : null)}
+                      className="w-full appearance-none bg-primary-bg border border-gray-600 rounded-lg px-4 py-3 pr-10 text-text-primary focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                    >
+                      <option value="">Tüm Puanlar</option>
+                      <option value="5">⭐⭐⭐⭐⭐ 5+ Yıldız</option>
+                      <option value="4">⭐⭐⭐⭐ 4+ Yıldız</option>
+                      <option value="3">⭐⭐⭐ 3+ Yıldız</option>
+                      <option value="2">⭐⭐ 2+ Yıldız</option>
+                      <option value="1">⭐ 1+ Yıldız</option>
+                    </select>
+                    <ChevronDown size={18} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* Sıralama */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-text-primary">Sıralama</label>
+                  <div className="relative">
+                    <select
+                      value={sortBy || ''}
+                      onChange={(e) => setSortBy(e.target.value as any)}
+                      className="w-full appearance-none bg-primary-bg border border-gray-600 rounded-lg px-4 py-3 pr-10 text-text-primary focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                    >
+                      <option value="">Varsayılan</option>
+                      <option value="price-asc">💰 Fiyat: Düşükten Yükseğe</option>
+                      <option value="price-desc">💰 Fiyat: Yüksekten Düşüğe</option>
+                      <option value="rating">⭐ Puana Göre</option>
+                      <option value="name">📝 İsme Göre (A-Z)</option>
+                    </select>
+                    <ChevronDown size={18} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Aktif Filtreler */}
+            {hasActiveFilters && (
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-text-primary">Aktif Filtreler</h3>
+                <div className="flex flex-wrap gap-2">
+                  {showPopularOnly && (
+                    <span className="inline-flex items-center space-x-1 bg-accent-red/20 text-accent-red px-3 py-2 rounded-full text-sm font-medium">
+                      <Star size={14} />
+                      <span>Popüler</span>
+                      <button
+                        onClick={() => setShowPopularOnly(false)}
+                        className="hover:text-red-300 ml-1"
+                      >
+                        <X size={14} />
+                      </button>
+                    </span>
+                  )}
+                  {ratingFilter !== null && (
+                    <span className="inline-flex items-center space-x-1 bg-accent-gold/20 text-accent-gold px-3 py-2 rounded-full text-sm font-medium">
+                      <span>{ratingFilter}⭐+</span>
+                      <button
+                        onClick={() => setRatingFilter(null)}
+                        className="hover:text-yellow-300 ml-1"
+                      >
+                        <X size={14} />
+                      </button>
+                    </span>
+                  )}
+                  {sortBy && (
+                    <span className="inline-flex items-center space-x-1 bg-primary-bg text-text-primary px-3 py-2 rounded-full text-sm font-medium border border-gray-600">
+                      <span>
+                        {sortBy === 'price-asc' ? 'Fiyat ↑' :
+                         sortBy === 'price-desc' ? 'Fiyat ↓' :
+                         sortBy === 'rating' ? 'Puan' :
+                         sortBy === 'name' ? 'İsim' : ''}
+                      </span>
+                      <button
+                        onClick={() => setSortBy(null)}
+                        className="hover:text-text-secondary ml-1"
+                      >
+                        <X size={14} />
+                      </button>
+                    </span>
+                  )}
+                </div>
+                
+                <button
+                  onClick={clearFilters}
+                  className="w-full flex items-center justify-center space-x-2 bg-primary-secondary hover:bg-primary-bg border border-gray-600 text-text-primary py-2 px-4 rounded-lg font-medium transition-colors"
+                >
+                  <RotateCcw size={16} />
+                  <span>Tüm Filtreleri Temizle</span>
+                </button>
+              </div>
+            )}
           </div>
 
           <div className={`mt-8 pt-6 border-t border-gray-700 ${sidebarOpen ? 'block' : 'lg:hidden'}`}>
@@ -300,6 +461,145 @@ export default function MenuPage() {
                 <div className="text-sm opacity-70 mt-1">{category.description}</div>
               </button>
             ))}
+
+            {/* Mobile Filtreler */}
+            <div className="mt-6 pt-6 border-t border-gray-700 space-y-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-text-primary">Ürün Ara</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Ürün adı ile ara..."
+                    className="w-full bg-primary-bg border border-gray-600 rounded-lg px-4 py-3 pr-10 text-text-primary placeholder-text-secondary focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  <Search size={18} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary" />
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <label className="flex items-center space-x-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={showPopularOnly}
+                    onChange={(e) => setShowPopularOnly(e.target.checked)}
+                    className="w-5 h-5 text-accent-gold bg-primary-bg border-gray-600 rounded focus:ring-accent-gold focus:ring-2"
+                  />
+                  <div className="flex items-center space-x-2">
+                    <Star size={16} className="text-yellow-400 fill-current" />
+                    <span className="text-text-primary font-medium group-hover:text-accent-gold transition-colors">
+                      Sadece Popüler Ürünler
+                    </span>
+                  </div>
+                </label>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-text-primary">Minimum Puan</label>
+                  <div className="relative">
+                    <select
+                      value={ratingFilter || ''}
+                      onChange={(e) => setRatingFilter(e.target.value ? parseInt(e.target.value) : null)}
+                      className="w-full appearance-none bg-primary-bg border border-gray-600 rounded-lg px-4 py-3 pr-10 text-text-primary focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                    >
+                      <option value="">Tüm Puanlar</option>
+                      <option value="5">⭐⭐⭐⭐⭐ 5+ Yıldız</option>
+                      <option value="4">⭐⭐⭐⭐ 4+ Yıldız</option>
+                      <option value="3">⭐⭐⭐ 3+ Yıldız</option>
+                      <option value="2">⭐⭐ 2+ Yıldız</option>
+                      <option value="1">⭐ 1+ Yıldız</option>
+                    </select>
+                    <ChevronDown size={18} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-text-primary">Sıralama</label>
+                  <div className="relative">
+                    <select
+                      value={sortBy || ''}
+                      onChange={(e) => setSortBy(e.target.value as any)}
+                      className="w-full appearance-none bg-primary-bg border border-gray-600 rounded-lg px-4 py-3 pr-10 text-text-primary focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                    >
+                      <option value="">Varsayılan</option>
+                      <option value="price-asc">💰 Fiyat: Düşükten Yükseğe</option>
+                      <option value="price-desc">💰 Fiyat: Yüksekten Düşüğe</option>
+                      <option value="rating">⭐ Puana Göre</option>
+                      <option value="name">📝 İsme Göre (A-Z)</option>
+                    </select>
+                    <ChevronDown size={18} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Aktif Filtreler - Mobile */}
+            {hasActiveFilters && (
+              <div className="space-y-3 border-t border-gray-700 pt-6">
+                <h3 className="text-lg font-semibold text-text-primary">Aktif Filtreler</h3>
+                <div className="flex flex-wrap gap-2">
+                  {searchQuery.trim() && (
+                    <span className="inline-flex items-center space-x-1 bg-accent-gold/20 text-accent-gold px-3 py-2 rounded-full text-sm font-medium">
+                      <Search size={14} />
+                      <span>Arama: {searchQuery}</span>
+                      <button
+                        onClick={() => setSearchQuery('')}
+                        className="hover:text-yellow-300 ml-1"
+                      >
+                        <X size={14} />
+                      </button>
+                    </span>
+                  )}
+                  {showPopularOnly && (
+                    <span className="inline-flex items-center space-x-1 bg-accent-red/20 text-accent-red px-3 py-2 rounded-full text-sm font-medium">
+                      <Star size={14} />
+                      <span>Popüler</span>
+                      <button
+                        onClick={() => setShowPopularOnly(false)}
+                        className="hover:text-red-300 ml-1"
+                      >
+                        <X size={14} />
+                      </button>
+                    </span>
+                  )}
+                  {ratingFilter !== null && (
+                    <span className="inline-flex items-center space-x-1 bg-accent-gold/20 text-accent-gold px-3 py-2 rounded-full text-sm font-medium">
+                      <span>{ratingFilter}⭐+</span>
+                      <button
+                        onClick={() => setRatingFilter(null)}
+                        className="hover:text-yellow-300 ml-1"
+                      >
+                        <X size={14} />
+                      </button>
+                    </span>
+                  )}
+                  {sortBy && (
+                    <span className="inline-flex items-center space-x-1 bg-primary-bg text-text-primary px-3 py-2 rounded-full text-sm font-medium border border-gray-600">
+                      <span>
+                        {sortBy === 'price-asc' ? 'Fiyat ↑' :
+                         sortBy === 'price-desc' ? 'Fiyat ↓' :
+                         sortBy === 'rating' ? 'Puan' :
+                         sortBy === 'name' ? 'İsim' : ''}
+                      </span>
+                      <button
+                        onClick={() => setSortBy(null)}
+                        className="hover:text-text-secondary ml-1"
+                      >
+                        <X size={14} />
+                      </button>
+                    </span>
+                  )}
+                </div>
+
+                <button
+                  onClick={clearFilters}
+                  className="w-full flex items-center justify-center space-x-2 bg-primary-secondary hover:bg-primary-bg border border-gray-600 text-text-primary py-2 px-4 rounded-lg font-medium transition-colors"
+                >
+                  <RotateCcw size={16} />
+                  <span>Tüm Filtreleri Temizle</span>
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-700">
