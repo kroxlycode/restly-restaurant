@@ -46,21 +46,13 @@ const saveTimesData = (data: TimesData): boolean => {
 export async function GET() {
   try {
     const timesData = getTimesData()
-    const response = NextResponse.json(timesData)
-    response.headers.set('Access-Control-Allow-Origin', '*')
-    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    return response
+    return NextResponse.json(timesData)
   } catch (error) {
     console.error('Çalışma saatleri alınırken hata:', error)
-    const response = NextResponse.json(
+    return NextResponse.json(
       { error: 'Çalışma saatleri alınamadı' },
       { status: 500 }
     )
-    response.headers.set('Access-Control-Allow-Origin', '*')
-    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    return response
   }
 }
 
@@ -92,38 +84,19 @@ export async function POST(request: NextRequest) {
 
     const success = saveTimesData(newTimesData)
     if (success) {
-      const response = NextResponse.json({ message: 'Çalışma saatleri başarıyla kaydedildi' })
-      response.headers.set('Access-Control-Allow-Origin', '*')
-      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-      response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-      return response
+      return NextResponse.json({ message: 'Çalışma saatleri başarıyla kaydedildi' })
     } else {
-      const response = NextResponse.json(
+      return NextResponse.json(
         { error: 'Çalışma saatleri kaydedilemedi' },
         { status: 500 }
       )
-      response.headers.set('Access-Control-Allow-Origin', '*')
-      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-      response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-      return response
     }
   } catch (error) {
     console.error('Çalışma saatleri kaydedilirken hata:', error)
-    const response = NextResponse.json(
+    return NextResponse.json(
       { error: 'Çalışma saatleri kaydedilirken hata oluştu' },
       { status: 500 }
     )
-    response.headers.set('Access-Control-Allow-Origin', '*')
-    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    return response
   }
 }
 
-export async function OPTIONS() {
-  const response = new NextResponse(null, { status: 200 })
-  response.headers.set('Access-Control-Allow-Origin', '*')
-  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  return response
-}
