@@ -43,10 +43,18 @@ const saveMenuData = (data: any) => {
 export async function GET() {
   try {
     const menuData = getMenuData()
-    return NextResponse.json(menuData)
+    const response = NextResponse.json(menuData)
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
   } catch (error) {
     console.error('Menü verileri getirilemedi:', error)
-    return NextResponse.json({ error: 'Menü verileri getirilemedi' }, { status: 500 })
+    const response = NextResponse.json({ error: 'Menü verileri getirilemedi' }, { status: 500 })
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
   }
 }
 
@@ -195,13 +203,33 @@ export async function POST(request: NextRequest) {
 
     const success = saveMenuData(menuData)
     if (success) {
-      return NextResponse.json({ success: true, data: menuData })
+      const response = NextResponse.json({ success: true, data: menuData })
+      response.headers.set('Access-Control-Allow-Origin', '*')
+      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+      return response
     } else {
-      return NextResponse.json({ error: 'Veriler kaydedilemedi' }, { status: 500 })
+      const response = NextResponse.json({ error: 'Veriler kaydedilemedi' }, { status: 500 })
+      response.headers.set('Access-Control-Allow-Origin', '*')
+      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+      return response
     }
   } catch (error) {
     console.error('Menü işlemi başarısız:', error)
-    return NextResponse.json({ error: 'İşlem gerçekleştirilemedi' }, { status: 500 })
+    const response = NextResponse.json({ error: 'İşlem gerçekleştirilemedi' }, { status: 500 })
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
   }
+}
+
+export async function OPTIONS() {
+  const response = new NextResponse(null, { status: 200 })
+  response.headers.set('Access-Control-Allow-Origin', '*')
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  return response
 }
 
