@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Phone, Settings } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface SeoSettings {
@@ -112,16 +112,6 @@ export default function Header() {
               <Phone size={18} />
               <span>Rezervasyon</span>
             </Link>
-
-            
-            <Link
-              href="/admin/login"
-              className="hidden md:flex items-center space-x-2 p-2 text-text-secondary hover:text-accent-gold transition-colors duration-300"
-              title="Admin Paneli"
-            >
-              <Settings size={18} />
-            </Link>
-
             
             <button
               onClick={() => setIsOpen(!isOpen)}
