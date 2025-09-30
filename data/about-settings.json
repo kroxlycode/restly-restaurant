@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "description": "2009 yılından beri lezzet yolculuğunda sizlerle birliktee"
+  },
+  "story": {
+    "title": "Hikayemiz",
+    "paragraphs": [
+      "Restly, 2009 yılında İstanbul'un kalbinde, lezzet tutkusu olan bir grup arkadaş tarafından kuruldu. Amacımız, modern gastronomi teknikleri ile geleneksel Türk mutfağının eşsiz lezzetlerini harmanlayarak, misafirlerimize unutulmaz bir deneyim sunmaktı.",
+      "Yıllar içinde, kaliteli malzemeler, deneyimli şef kadromuz ve sıcak atmosferimizle İstanbul'un en sevilen restoranlarından biri haline geldik. Her tabakta bir sanat eseri yaratma vizyonumuz, bizi bugünkü konumumuza getirdi.",
+      "Bugün, 15 yılı aşkın deneyimimizle, modern gastronomi dünyasında öncü konumumuzu sürdürürken, geleneksel değerlerimizi de korumaya devam ediyoruz."
+    ]
+  },
+  "mission": {
+    "title": "Misyonumuz",
+    "description": "Müşterilerimize sadece yemek değil, unutulmaz bir deneyim sunmak. Kaliteli malzemeler, yaratıcı sunumlar ve sıcak hizmet anlayışımızla her ziyareti özel kılmak misyonumuzun temelini oluşturuyor."
+  },
+  "vision": {
+    "title": "Vizyonumuz",
+    "description": "Türkiye'nin gastronomi haritasında öncü konumumuzu güçlendirerek, uluslararası arenada Türk mutfağının modern yorumunu temsil eden bir marka olmak vizyonumuzun merkezinde yer alıyor."
+  },
+  "stats": [
+    {
+      "icon": "Award",
+      "number": "10+",
+      "label": "Yıl Deneyim"
+    },
+    {
+      "icon": "Users",
+      "number": "10K+",
+      "label": "Mutlu Müşteri"
+    },
+    {
+      "icon": "Clock",
+      "number": "24/7",
+      "label": "Rezervasyon"
+    },
+    {
+      "icon": "Heart",
+      "number": "98%",
+      "label": "Memnuniyet"
+    }
+  ],
+  "team": [
+    {
+      "id": "1",
+      "name": "Chef Marco Rossi",
+      "role": "Baş Şef",
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759080182/restly-team/ldx5vgdmuf2jldpyi3ke.jpg",
+      "description": "İtalya'da Michelin yıldızlı restoranlarda 20 yıl deneyim"
+    },
+    {
+      "id": "2",
+      "name": "Ayşe Demir",
+      "role": "Pastry Chef",
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759081149/restly-team/craek3a420tp96w3c9df.jpg",
+      "description": "Paris'te Le Cordon Bleu mezunu, tatlı sanatları uzmanı"
+    },
+    {
+      "id": "3",
+      "name": "Mehmet Kaya",
+      "role": "Sommelier",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "description": "Uluslararası şarap uzmanı, 15 yıllık deneyim"
+    }
+  ],
+  "updatedAt": "2025-09-30T09:51:51.018Z"
+}

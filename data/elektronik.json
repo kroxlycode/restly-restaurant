@@ -1,0 +1,54 @@
+{
+  "title": "Elektronik İletişim Politikası",
+  "subtitle": "SMS, e-posta ve diğer elektronik iletişim kanalları hakkında bilgilendirme",
+  "lastUpdated": "30.09.2025",
+  "sections": [
+    {
+      "title": "Elektronik İletişim Hakkında",
+      "content": "5809 sayılı Elektronik Haberleşme Kanunu uyarınca, müşterilerimize SMS, e-posta ve diğer elektronik kanallar üzerinden pazarlama iletişimi yapabilmek için açık rızanızı almaktayız."
+    },
+    {
+      "icon": "MessageSquare",
+      "title": "İletişim Türleri",
+      "content": [
+        "SMS ile kampanya ve özel teklif bildirimleri",
+        "E-posta ile menü güncellemeleri ve etkinlik duyuruları",
+        "Rezervasyon hatırlatmaları",
+        "Doğum günü ve özel gün kutlamaları",
+        "Yeni ürün ve hizmet tanıtımları"
+      ]
+    },
+    {
+      "icon": "Shield",
+      "title": "İzin Alma Prosedürü",
+      "description": "Elektronik iletişim izninizi aşağıdaki yollarla alıyoruz:",
+      "content": [
+        "Rezervasyon formunda açık rıza onay kutusu",
+        "Web sitemizde newsletter kayıt formu",
+        "Restoranda fiziksel form doldurma",
+        "Telefon ile sözlü onay (kayıt altına alınır)"
+      ]
+    },
+    {
+      "icon": "Phone",
+      "title": "Red Hakları",
+      "description": "Elektronik iletişim iznini istediğiniz zaman geri çekebilirsiniz:",
+      "content": [
+        "SMS'lerde \"RED\" yazarak 3607'ye gönderebilirsiniz",
+        "E-postalardaki \"Abonelikten Çık\" linkini kullanabilirsiniz",
+        "+90 212 123 45 67 numaralı telefonu arayabilirsiniz",
+        "info@restly.com adresine e-posta gönderebilirsiniz"
+      ]
+    }
+  ],
+  "importantInfo": [
+    "İzin verdiğiniz iletişim kanalları sadece pazarlama amaçlı kullanılır",
+    "Rezervasyon onayları ve önemli bilgilendirmeler izin gerektirmez",
+    "Kişisel verileriniz üçüncü kişilerle paylaşılmaz",
+    "İletişim sıklığımız ayda maksimum 4 mesajdır"
+  ],
+  "contact": {
+    "phone": "+90 212 123 45 67",
+    "email": "info@restly.com"
+  }
+}

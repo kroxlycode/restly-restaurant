@@ -1,0 +1,66 @@
+{
+  "title": "Çerez Politikası",
+  "subtitle": "Web sitemizde kullanılan çerezler hakkında detaylı bilgilendirme",
+  "lastUpdated": "30.09.2025",
+  "sections": [
+    {
+      "title": "Çerez Nedir?",
+      "content": "Çerezler, web sitelerinin kullanıcıların cihazlarında sakladığı küçük metin dosyalarıdır. Bu dosyalar, web sitesinin daha iyi çalışmasını sağlar ve kullanıcı deneyimini geliştirir. Restly olarak, size daha iyi hizmet verebilmek için çerezleri kullanıyoruz."
+    },
+    {
+      "icon": "Settings",
+      "title": "Zorunlu Çerezler",
+      "description": "Web sitesinin temel işlevlerini yerine getirmesi için gerekli çerezlerdir:",
+      "content": [
+        "Oturum yönetimi çerezleri",
+        "Güvenlik çerezleri",
+        "Dil ve bölge tercihleri",
+        "Rezervasyon formu bilgileri"
+      ]
+    },
+    {
+      "icon": "BarChart",
+      "title": "Analitik Çerezler",
+      "description": "Web sitesi performansını ölçmek ve iyileştirmek için kullanılan çerezler:",
+      "content": [
+        "Google Analytics çerezleri",
+        "Sayfa görüntüleme istatistikleri",
+        "Kullanıcı davranış analizi",
+        "Site hızı ve performans ölçümü"
+      ]
+    },
+    {
+      "icon": "Shield",
+      "title": "Çerez Yönetimi",
+      "description": "Çerez tercihlerinizi aşağıdaki yollarla yönetebilirsiniz:",
+      "content": [
+        "Tarayıcı ayarlarından çerezleri devre dışı bırakabilirsiniz",
+        "Mevcut çerezleri silebilirsiniz",
+        "Çerez bildirimleri alabilirsiniz",
+        "Üçüncü taraf çerezleri engelleyebilirsiniz"
+      ]
+    }
+  ],
+  "browserSettings": {
+    "chrome": [
+      "Ayarlar > Gizlilik ve güvenlik",
+      "Site ayarları > Çerezler",
+      "İstediğiniz seçeneği belirleyin"
+    ],
+    "firefox": [
+      "Ayarlar > Gizlilik ve Güvenlik",
+      "Çerezler ve Site Verileri",
+      "Tercihlerinizi ayarlayın"
+    ]
+  },
+  "importantWarnings": [
+    "Zorunlu çerezleri devre dışı bırakırsanız site düzgün çalışmayabilir",
+    "Analitik çerezler kişisel bilgi içermez, sadece istatistik amaçlıdır",
+    "Çerez tercihleriniz cihazınızda saklanır",
+    "Farklı cihazlarda ayrı ayrı ayarlama yapmanız gerekebilir"
+  ],
+  "contact": {
+    "email": "info@restly.com",
+    "phone": "+90 212 123 45 67"
+  }
+}

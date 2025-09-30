@@ -1,0 +1,164 @@
+{
+  "categories": [
+    {
+      "id": "kahvalti",
+      "name": "Kahvaltı",
+      "description": "Taze malzemelerle hazırlanan lezzetli kahvaltı seçenekleri"
+    },
+    {
+      "id": "baslangiclar",
+      "name": "Başlangıçlar",
+      "description": "İştah açıcı lezzetler"
+    },
+    {
+      "id": "corba",
+      "name": "Çorbalar",
+      "description": "Sıcak ve lezzetli çorba çeşitleri"
+    },
+    {
+      "id": "anayemekler",
+      "name": "Ana Yemekler",
+      "description": "Özenle hazırlanan ana lezzetler"
+    },
+    {
+      "id": "etyemekleri",
+      "name": "Et Yemekleri",
+      "description": "Premium et yemekleri"
+    },
+    {
+      "id": "tavuk",
+      "name": "Tavuk Yemekleri",
+      "description": "Sağlıklı tavuk yemekleri"
+    },
+    {
+      "id": "denizurunleri",
+      "name": "Deniz Ürünleri",
+      "description": "Taze deniz ürünleri"
+    },
+    {
+      "id": "vejeteryan",
+      "name": "Vejeteryan",
+      "description": "Bitkisel beslenme seçenekleri"
+    },
+    {
+      "id": "tatlilar",
+      "name": "Tatlılar",
+      "description": "Neşeli bitişler için tatlı lezzetler"
+    },
+    {
+      "id": "icecekler",
+      "name": "İçecekler",
+      "description": "Serinletici ve ferahlatıcı içecekler"
+    }
+  ],
+  "items": [
+    {
+      "id": "95c90510-b4d6-42c3-a84c-4b02c4c9dcb3",
+      "name": "Serpme Kahvaltı",
+      "categoryId": "kahvalti",
+      "description": "Serpme Kahvaltı",
+      "price": 214,
+      "ingredients": [
+        "sucuklu yumurta",
+        "patates kızartması",
+        "bal",
+        "reçel",
+        "zeytin çeşitleri",
+        "peynir çeşitleri",
+        "menemen",
+        "çay"
+      ],
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759003308/restly-menu/vizywegpmtchxgktgpk8.png",
+      "popular": true,
+      "rating": 4.7,
+      "allergens": [],
+      "createdAt": "2025-09-27T19:09:30.127Z",
+      "publicId": "restly-menu/hcgcauhtxadvtibcouon",
+      "updatedAt": "2025-09-27T20:01:50.439Z"
+    },
+    {
+      "id": "3c06b776-e9c2-4c82-adde-b07a5b872f62",
+      "name": "Başlangıç Yemekleri",
+      "categoryId": "baslangiclar",
+      "description": "Başlangıç Yemekleri",
+      "price": 345,
+      "ingredients": [
+        "pide çeşitleri",
+        "sulu yemekler"
+      ],
+      "popular": true,
+      "rating": 4.4,
+      "allergens": [],
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759004056/restly-menu/lwg7zunmhty7ut459d78.png",
+      "createdAt": "2025-09-27T20:14:18.371Z"
+    },
+    {
+      "id": "ce5f3eaf-6435-4c0a-a087-18a306259521",
+      "name": "Mercimek Çorbası",
+      "categoryId": "corba",
+      "description": "Mercimek Çorbası",
+      "price": 100,
+      "ingredients": [],
+      "popular": true,
+      "rating": 5,
+      "allergens": [],
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759004155/restly-menu/bjhmpub4yi8lyglvmkcx.png",
+      "createdAt": "2025-09-27T20:15:56.260Z",
+      "updatedAt": "2025-09-27T20:16:08.519Z"
+    },
+    {
+      "id": "4c85a8f1-8082-494c-8ccf-c38427800f24",
+      "name": "Patlıcan Kebabı",
+      "categoryId": "anayemekler",
+      "description": "Patlıcan Kebabı",
+      "price": 276,
+      "ingredients": [],
+      "popular": true,
+      "rating": 4,
+      "allergens": [],
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759004263/restly-menu/t3ahs9q1uutwkisbfd4x.png",
+      "createdAt": "2025-09-27T20:17:45.393Z"
+    },
+    {
+      "id": "8acf69f8-e191-483d-a4eb-2f9e1b4e4010",
+      "name": "Tavada Biberli Et",
+      "categoryId": "etyemekleri",
+      "description": "Tavada Biberli Et",
+      "price": 351,
+      "ingredients": [],
+      "popular": false,
+      "rating": 4.7,
+      "allergens": [],
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759004454/restly-menu/npvfjq5e6gimiujpstjn.png",
+      "createdAt": "2025-09-27T20:20:56.001Z",
+      "updatedAt": "2025-09-27T20:29:14.836Z"
+    },
+    {
+      "id": "adb578ca-143e-463a-a5e7-47bcc17cd279",
+      "name": "Haşlanmış Tavuk Kavurması",
+      "categoryId": "tavuk",
+      "description": "Haşlanmış Tavuk Kavurması",
+      "price": 276,
+      "ingredients": [],
+      "popular": false,
+      "rating": 4.1,
+      "allergens": [],
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759004934/restly-menu/znzpywd9h4ph2l02kcjs.png",
+      "createdAt": "2025-09-27T20:28:55.734Z",
+      "updatedAt": "2025-09-27T20:29:17.803Z"
+    },
+    {
+      "id": "09aae72e-05e5-4de4-9817-67b7a7832f43",
+      "name": "Midye",
+      "categoryId": "denizurunleri",
+      "description": "Midye",
+      "price": 50,
+      "ingredients": [],
+      "popular": false,
+      "rating": 4,
+      "allergens": [],
+      "image": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759005389/restly-menu/f7qyyxkembnwfpyhe0on.png",
+      "createdAt": "2025-09-27T20:36:31.010Z"
+    }
+  ]
+}

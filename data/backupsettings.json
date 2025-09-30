@@ -1,0 +1,88 @@
+{
+  "enabled": false,
+  "intervalHours": 24,
+  "intervalMinutes": 0,
+  "email": "thekroxly34@gmail.com",
+  "logs": [
+    {
+      "id": "1759143303107",
+      "timestamp": "2025-09-29T10:55:03.107Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759143302306",
+      "timestamp": "2025-09-29T10:55:02.306Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759143302060",
+      "timestamp": "2025-09-29T10:55:02.060Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759143301846",
+      "timestamp": "2025-09-29T10:55:01.846Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759142244022",
+      "timestamp": "2025-09-29T10:37:24.022Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759141942631",
+      "timestamp": "2025-09-29T10:32:22.631Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759141920626",
+      "timestamp": "2025-09-29T10:32:00.626Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759141920557",
+      "timestamp": "2025-09-29T10:32:00.557Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759141920517",
+      "timestamp": "2025-09-29T10:32:00.517Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "1759141917136",
+      "timestamp": "2025-09-29T10:31:57.136Z",
+      "type": "auto",
+      "status": "success",
+      "emailSent": true,
+      "fileSize": "12 KB"
+    }
+  ]
+}

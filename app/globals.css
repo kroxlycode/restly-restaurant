@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary-bg text-text-primary font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-accent-gold to-yellow-500 text-primary-bg px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-accent-gold/25 hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-accent-gold text-accent-gold px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-accent-gold hover:text-primary-bg;
+  }
+  
+  .card {
+    @apply bg-primary-card rounded-xl p-6 shadow-lg border border-gray-800 transition-all duration-300 hover:shadow-xl hover:shadow-accent-gold/10;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-gold to-yellow-500 bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply bg-primary-card/80 backdrop-blur-sm border border-gray-800/50;
+  }
+}

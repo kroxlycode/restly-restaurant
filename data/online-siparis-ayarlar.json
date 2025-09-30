@@ -1,0 +1,26 @@
+{
+  "yemeksepeti": {
+    "name": "Yemeksepeti",
+    "active": true,
+    "link": "https://www.kroxly.dev",
+    "phone": ""
+  },
+  "getir": {
+    "name": "Getir",
+    "active": true,
+    "link": "https://www.kroxly.dev",
+    "phone": ""
+  },
+  "trendyolgoyemek": {
+    "name": "Trendyol Go Yemek",
+    "active": true,
+    "link": "https://www.kroxly.dev",
+    "phone": ""
+  },
+  "tiklagelsin": {
+    "name": "Tıkla Gelsin",
+    "active": true,
+    "link": "https://www.kroxly.dev",
+    "phone": ""
+  }
+}

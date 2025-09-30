@@ -1,0 +1,46 @@
+[
+  {
+    "id": "a581f02e-8786-4ee3-b8e8-9c4066cb56c3",
+    "title": "Restoran",
+    "description": "Restoran",
+    "categories": [
+      "Restoran"
+    ],
+    "imageUrl": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759160029/restly-gallery/pizvuttdtvufzdyh9mrt.png",
+    "publicId": "restly-gallery/pizvuttdtvufzdyh9mrt",
+    "createdAt": "2025-09-29T15:33:50.706Z"
+  },
+  {
+    "id": "6d97ee4d-543a-404c-9463-26233c7cc85d",
+    "title": "Restoran",
+    "description": "Restoran",
+    "categories": [
+      "Restoran"
+    ],
+    "imageUrl": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759160049/restly-gallery/wddgscbeg95zrpzgmiix.png",
+    "publicId": "restly-gallery/wddgscbeg95zrpzgmiix",
+    "createdAt": "2025-09-29T15:34:09.284Z"
+  },
+  {
+    "id": "8c72ce05-8b59-4160-83e3-54467455be19",
+    "title": "Restoran",
+    "description": "Restoran",
+    "categories": [
+      "Yemekler"
+    ],
+    "imageUrl": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759160074/restly-gallery/hmus96gwiqv3yfc67xwj.png",
+    "publicId": "restly-gallery/hmus96gwiqv3yfc67xwj",
+    "createdAt": "2025-09-29T15:34:34.983Z"
+  },
+  {
+    "id": "9b4ac3fb-a92b-44bf-a535-9dcbcc429b2d",
+    "title": "Restoran",
+    "description": "Restoran",
+    "categories": [
+      "Şefler"
+    ],
+    "imageUrl": "https://res.cloudinary.com/dfjiurtgd/image/upload/v1759160112/restly-gallery/q1wn0cliuihtzbqk3ohn.png",
+    "publicId": "restly-gallery/q1wn0cliuihtzbqk3ohn",
+    "createdAt": "2025-09-29T15:35:12.807Z"
+  }
+]

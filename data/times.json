@@ -1,0 +1,17 @@
+{
+  "weekdays": {
+    "open": "08:00",
+    "close": "23:00",
+    "isOpen": true
+  },
+  "saturday": {
+    "open": "09:00",
+    "close": "01:00",
+    "isOpen": true
+  },
+  "sunday": {
+    "open": "09:30",
+    "close": "22:00",
+    "isOpen": true
+  }
+}

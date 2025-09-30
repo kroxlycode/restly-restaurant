@@ -1,0 +1,17 @@
+{
+  "defaultTitle": "Restly Restaurantfas",
+  "defaultMessage": "Yeni kampanyalarımızdan haberdar olmak ister misiniz?",
+  "defaultUrl": "/",
+  "autoShowDelay": 3000,
+  "enablePopup": true,
+  "popupTitle": "Hoş Geldiniz! 👋",
+  "popupMessage": "Restly Restaurant'a hoş geldiniz! Özel lezzetlerimiz, kampanyalarımız ve rezervasyon fırsatlarımızdan haberdar olmak ister misiniz?",
+  "showOnAllPages": true,
+  "excludedPages": [
+    "/admin",
+    "/api"
+  ],
+  "maxShowsPerUser": 3,
+  "showAgainAfterDays": 7,
+  "updatedAt": "2025-09-28T13:46:49.638Z"
+}
