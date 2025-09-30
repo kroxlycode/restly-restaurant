@@ -83,7 +83,7 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <div className="w-6 h-10 border-2 border-accent-gold rounded-full flex justify-center">
+            <div className="w-6 h-10 mt-10 md:mt-0 border-2 border-accent-gold rounded-full flex justify-center">
               <motion.div
                 className="w-1 h-3 bg-accent-gold rounded-full mt-2"
                 animate={{ y: [0, 12, 0] }}
