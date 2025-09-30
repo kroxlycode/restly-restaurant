@@ -126,11 +126,7 @@ export default function AdminLoginPage() {
 
           
           <div className="mt-6 p-4 bg-primary-secondary rounded-lg border border-gray-700">
-            <h3 className="text-accent-gold font-semibold mb-2">Demo Bilgileri:</h3>
-            <div className="text-text-secondary text-sm space-y-1">
-              <p>Kullanıcı Adı: <span className="text-text-primary font-mono">admin</span></p>
-              <p>Şifre: <span className="text-text-primary font-mono">admin123</span></p>
-            </div>
+            <h3 className="text-accent-gold font-semibold mb-2">dev by kroxly</h3>
           </div>
         </div>
       </motion.div>
