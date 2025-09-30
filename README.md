@@ -138,20 +138,20 @@ Proje çalışması için gerekli environment değişkenlerini `.env.local` dosy
 ```env
 # Push Notification VAPID Keys (Web Push Bildirimleri için)
 # Bu anahtarları oluşturmak için: npx web-push generate-vapid-keys
-NEXT_PUBLIC_VAPID_PUBLIC_KEY=BDx97DWN3mXiEFE8F49tMrH3DF5Xrw99Qng33isQVXu-SC75Z4jY2gwV6enas2eGNNdrUWiv-mlEBIq4gz-dkjo
-VAPID_PRIVATE_KEY=lsrZ2wAwHqdcSHDKFAnrl8cveiGKz1eWa5k_rH64BM8
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=
+VAPID_PRIVATE_KEY=
 
 # FCM Server Key (Firebase Cloud Messaging - Opsiyonel)
 # Firebase Console > Project Settings > Cloud Messaging'ten alın
-FCM_SERVER_KEY=AAAA123456:APA91bF...your-fcm-server-key-here
+FCM_SERVER_KEY=
 
 # Cloudinary Configuration (Görsel Yönetimi için)
 # Cloudinary dashboard'ınızdan bu bilgileri alın
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dfjiurtgd
-NEXT_PUBLIC_CLOUDINARY_API_KEY=594455381716229
-CLOUDINARY_API_KEY=594455381716229
-CLOUDINARY_API_SECRET=9by8cQrc3-o3nv0umqf02rZ1MlA
-NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=restly-general
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+NEXT_PUBLIC_CLOUDINARY_API_KEY=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=
 
 # Admin Panel Configuration (Yönetim Paneli için)
 NEXT_PUBLIC_ADMIN_USERNAME=admin
