@@ -191,12 +191,139 @@ export default function MenuPage() {
 
       <div className="container-max flex gap-8">
         
+        {/* Desktop Sidebar */}
         <motion.aside
           initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`fixed top-20 left-0 z-40 w-80 h-[calc(100vh-80px)] bg-primary-card border-r border-gray-700 p-6 transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
+          className={`hidden lg:block w-80 bg-primary-card border-r border-gray-700 p-6 transition-all duration-300 ${sidebarOpen ? 'lg:translate-x-0' : 'lg:-translate-x-full lg:w-12'}`}
+        >
+          <div className="flex items-center justify-between mb-6">
+            <h2 className={`${sidebarOpen ? 'block' : 'lg:hidden'} text-xl font-serif font-bold text-text-primary`}>Filtre</h2>
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="p-2 hover:bg-primary-secondary rounded-lg transition-colors"
+            >
+              <Filter size={20} className="text-text-secondary" />
+            </button>
+          </div>
+
+          <div className={`space-y-4 overflow-y-auto max-h-[calc(100vh-200px)] ${sidebarOpen ? 'block' : 'lg:hidden'}`}>
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedCategory === 'all'
+                  ? 'bg-accent-gold text-primary-bg shadow-lg'
+                  : 'bg-primary-secondary text-text-secondary hover:text-accent-gold hover:bg-primary-bg border border-gray-700'
+                }`}
+            >
+              Tüm Ürünler
+            </button>
+
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedCategory === category.id
+                    ? 'bg-accent-gold text-primary-bg shadow-lg'
+                    : 'bg-primary-secondary text-text-secondary hover:text-accent-gold hover:bg-primary-bg border border-gray-700'
+                  }`}
+              >
+                <div className="font-medium">{category.name}</div>
+                <div className="text-sm opacity-70 mt-1">{category.description}</div>
+              </button>
+            ))}
+          </div>
+
+          <div className={`mt-8 pt-6 border-t border-gray-700 ${sidebarOpen ? 'block' : 'lg:hidden'}`}>
+            <h3 className="text-lg font-semibold text-text-primary mb-4">Filtreler</h3>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="popular-filter"
+                  checked={showPopularOnly}
+                  onChange={(e) => setShowPopularOnly(e.target.checked)}
+                  className="w-4 h-4 text-accent-gold bg-primary-bg border-gray-600 rounded focus:ring-accent-gold focus:ring-2"
+                />
+                <label htmlFor="popular-filter" className="text-text-primary text-sm font-medium cursor-pointer">
+                  Sadece Popüler Ürünler
+                </label>
+              </div>
+
+              <div className="relative">
+                <select
+                  value={ratingFilter || ''}
+                  onChange={(e) => setRatingFilter(e.target.value ? parseInt(e.target.value) : null)}
+                  className="appearance-none w-full bg-primary-bg border border-gray-600 rounded-lg px-4 py-2 pr-8 text-text-primary text-sm focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                >
+                  <option value="">Tüm Puanlar</option>
+                  <option value="5">5+ Yıldız</option>
+                  <option value="4">4+ Yıldız</option>
+                  <option value="3">3+ Yıldız</option>
+                  <option value="2">2+ Yıldız</option>
+                  <option value="1">1+ Yıldız</option>
+                </select>
+                <ChevronDown size={16} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
+              </div>
+
+              <div className="relative">
+                <select
+                  value={sortBy || ''}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  className="appearance-none w-full bg-primary-bg border border-gray-600 rounded-lg px-4 py-2 pr-8 text-text-primary text-sm focus:ring-2 focus:ring-accent-gold focus:border-transparent"
+                >
+                  <option value="">Sıralama</option>
+                  <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+                  <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+                  <option value="rating">Puana Göre</option>
+                  <option value="name">İsme Göre</option>
+                </select>
+                <ChevronDown size={16} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-text-secondary pointer-events-none" />
+              </div>
+
+              {hasActiveFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="flex items-center space-x-2 text-accent-gold hover:text-yellow-400 text-sm font-medium transition-colors"
+                >
+                  <RotateCcw size={16} />
+                  <span>Filtreleri Temizle</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className={`mt-8 pt-6 border-t border-gray-700 ${sidebarOpen ? 'block' : 'lg:hidden'}`}>
+            <h3 className="text-lg font-semibold text-text-primary mb-4">Menü İstatistikleri</h3>
+            <div className="space-y-2 text-sm text-text-secondary">
+              <div className="flex justify-between">
+                <span>Toplam Ürün:</span>
+                <span className="text-accent-gold font-medium">{menuItems.length}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Gösterilen:</span>
+                <span className="text-accent-gold font-medium">{filteredItems.length}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Kategori:</span>
+                <span className="text-accent-gold font-medium">{categories.length}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Popüler Ürünler:</span>
+                <span className="text-accent-gold font-medium">
+                  {menuItems.filter(item => item.popular).length}
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.aside>
+
+        {/* Mobile Sidebar */}
+        <motion.aside
+          initial={{ x: -300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className={`fixed top-20 left-0 z-40 w-80 h-[calc(100vh-80px)] bg-primary-card border-r border-gray-700 p-6 transition-transform duration-300 lg:hidden ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-serif font-bold text-text-primary">Filtre</h2>
@@ -208,7 +335,7 @@ export default function MenuPage() {
             </button>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 overflow-y-auto max-h-[calc(100vh-200px)]">
             <button
               onClick={() => setSelectedCategory('all')}
               className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedCategory === 'all'
@@ -327,9 +454,9 @@ export default function MenuPage() {
         )}
 
         
-        <main className="flex-1 section-padding">
+        <main className={`flex-1 section-padding ${sidebarOpen ? 'lg:ml-12' : 'lg:ml-80'}`}>
           
-          <div className="mb-6">
+          <div className="mb-6 lg:hidden">
             <button
               onClick={(e) => {
                 e.stopPropagation();
