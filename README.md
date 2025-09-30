@@ -7,6 +7,8 @@
 
 Restly, modern gastronomi ile geleneksel lezzetleri buluşturan restoran için tasarlanmış Next.js 14 tabanlı kapsamlı web sitesidir. Tam fonksiyonel admin paneli, otomatik yedekleme sistemi ve profesyonel özelliklerle donatılmıştır.
 
+![Restly](https://restly.kroxly.dev/placeholder.jpg)
+
 ## 🚀 Özellikler
 
 ### 🌐 Genel Özellikler
