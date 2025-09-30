@@ -31,7 +31,8 @@ const getSeoSettings = () => {
       siteTitle: 'Restly Restaurant - Modern Gastronomi Deneyimi',
       metaTitle: 'Restly Restaurant | İstanbul\'un En İyi Restoranı',
       metaDescription: 'Modern gastronomi ile geleneksel lezzetleri buluşturan Restly Restaurant\'ta unutulmaz bir yemek deneyimi yaşayın. İstanbul\'un kalbinde kaliteli hizmet.',
-      faviconUrl: '/favicon.svg'
+      faviconUrl: '/favicon.svg',
+      thumbnailUrl: '/placeholder.jpg',
     }
   }
 }
