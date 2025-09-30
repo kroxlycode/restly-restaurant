@@ -100,24 +100,12 @@ export default function MenuPage() {
   const filteredItems = (() => {
     let items = menuItems
 
-
-    if (selectedCategory !== 'all') {
-      items = items.filter(item => item.categoryId === selectedCategory)
-    }
-
-
-    if (showPopularOnly) {
-      items = items.filter(item => item.popular)
-    }
-
-
     if (ratingFilter !== null) {
-      items = items.filter(item => Math.floor(item.rating) >= ratingFilter)
+      items = items.filter((item: MenuItem) => Math.floor(item.rating) >= ratingFilter)
     }
-
 
     if (sortBy) {
-      items = [...items].sort((a, b) => {
+      items = [...items].sort((a: MenuItem, b: MenuItem) => {
         switch (sortBy) {
           case 'price-asc':
             return a.price - b.price
